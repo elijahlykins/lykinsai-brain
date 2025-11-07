@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- ORB ANIMATIONS ---------- */
+
+/* Gentle, flowing motion for the idle orb */
+@keyframes orbFlow {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    filter: brightness(1);
+  }
+  25% {
+    transform: scale(1.04) translate(3px, -3px);
+    filter: brightness(1.1);
+  }
+  50% {
+    transform: scale(1.07) translate(-4px, 3px);
+    filter: brightness(1.25);
+  }
+  75% {
+    transform: scale(1.03) translate(2px, -2px);
+    filter: brightness(1.1);
+  }
+}
+
+/* Subtle pulsing while recording */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1.15);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.35);
+  }
+}
+
+/* Glowing aura that breathes with the orb */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* ---------- CLASSES ---------- */
+
+/* Base flow for idle orb */
+.animate-orbFlow {
+  animation: orbFlow 5s ease-in-out infinite;
+}
+
+/* Pulse for recording state */
+.animate-pulse-slow {
+  animation: pulse-slow 2.8s ease-in-out infinite;
+}
+
+/* Soft dynamic white glow */
+.orb-glow {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.25) 25%,
+    rgba(255, 255, 255, 0.05) 60%,
+    transparent 100%
+  );
+  filter: blur(120px);
+  border-radius: 50%;
+  animation: glowPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
